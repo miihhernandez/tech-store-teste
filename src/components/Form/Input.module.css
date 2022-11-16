@@ -1,0 +1,33 @@
+
+.container {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.label {
+  white-space: nowrap;
+}
+
+.input {
+  background-color: transparent;
+  border: 2px solid #03282f;
+  color: #d6d6d6;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.875rem;
+  border-radius: 6px;
+  padding: 14px;
+  outline: none;
+  transition: 0.3s;
+  width: 100%;
+  margin-bottom: 14px;
+}
+.input:focus {
+  border-color: #05424f;
+}
+
+

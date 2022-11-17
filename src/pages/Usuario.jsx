@@ -10,9 +10,8 @@ const Usuario = () => {
   
     return (
         <div className={styles.container}>
-          <h2 className="usuario-form-title">Página de usuario.</h2>
-            <ButtonPrimary Text="sair" onClick={() => [signout(), navigate("/")]}>
-      </ButtonPrimary>
+          <h2 className="usuario-title">Página de usuario.</h2>
+          <ButtonPrimary text='Sair' onClick={() => [signout(), navigate("/")]}/>
       </div>
     );
   };

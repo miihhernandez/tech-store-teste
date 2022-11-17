@@ -8,6 +8,7 @@ import useAuth from '../context/useAuth';
 import InputSenha from '../components/Form/InputSenha';
 
 function Cadastro() {
+    const [user, setUser] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [emailConf, setEmailConf] = useState("");
@@ -17,7 +18,7 @@ function Cadastro() {
     const { Cadastro } = useAuth();
   
     const handleCadastro = () => {
-      if (!email | !emailConf | !password) {
+      if (!user | !email | !emailConf | !password) {
         setError("*Preencha todos os campos");
         return;
       } else if (email !== emailConf) {
@@ -26,7 +27,7 @@ function Cadastro() {
       }
      
   
-      const res = Cadastro(email, password);
+      const res = Cadastro(user, email, password);
   
       if (res) {
         setError(res);
@@ -45,6 +46,14 @@ function Cadastro() {
         <div className={styles.container.cadastro}>
         <form className="cadastro-form">
         <h2 className="cadastro-form-title">Faça o seu cadastro.</h2>
+        <div className="user-input">
+              <Input
+               label="Nome:"
+                type="text"
+                placeholder=""
+                value={user}
+                onChange={(e) => [setUser(e.target.value), setError("")]}
+              />
             <div className="email-input">
               <Input
                label="Email:"
@@ -84,10 +93,12 @@ function Cadastro() {
               <a className="txt2" href="login">
                 Fazer login
               </a>
+              </div>
             </div>
             </form>
             </div>
             </div>
+
    
     )
 };

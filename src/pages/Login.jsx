@@ -11,26 +11,26 @@ const Login = () => {
   const { Login } = useAuth();
   const navigate = useNavigate();
 
-
+    const [user, setUser] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     
 
     const handleLogin = () => {
-      if (!email | !password) {
+      if (!user | !email | !password) {
         setError("*Preencha todos os campos");
         return;
       }
   
-      const res = Login(email, password);
+      const res = Login(user, email, password);
   
       if (res) {
         setError(res);
         return;
       }
   
-      navigate("/usuario");
+      navigate("/login/usuario");
     };
 
 
@@ -39,6 +39,14 @@ const Login = () => {
         <div className={styles.container.login}>
         <form className="login-form">
         <h2 className="login-form-title"> Bem vindo de volta! </h2>
+        <div className="user-input">
+              <Input
+               label="Nome:"
+                type="text"
+                placeholder=""
+                value={user}
+                onChange={(e) => [setUser(e.target.value), setError("")]}
+              />
         <div className="email-input">
               <Input
               label="Email:"
@@ -67,6 +75,7 @@ const Login = () => {
               <a className="txt2" href="cadastro">
                 Criar conta
               </a>
+              </div>
             </div>
             </form>
             </div>

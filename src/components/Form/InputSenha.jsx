@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './Input.module.css';
+import styles from './InputSenha.module.css';
 
-function Input({ label, id, onChange, value, placeholder}) {
+function InputSenha({ label, id, onChange, value, placeholder}) {
   return (
     <div className={styles.container}>
       {label && (
@@ -11,7 +11,7 @@ function Input({ label, id, onChange, value, placeholder}) {
       )}
       <input
         className={styles.input}
-        type="text"
+        type="password"
         id={id}
         value={value}
         onChange={onChange}
@@ -21,4 +21,4 @@ function Input({ label, id, onChange, value, placeholder}) {
   );
 }
 
-export default Input;
+export default InputSenha;

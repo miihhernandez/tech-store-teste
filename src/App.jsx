@@ -12,6 +12,11 @@ import Login from './pages/Login';
 import Usuario from './pages/Usuario';
 import { AuthProvider } from "./context/auth";
 
+function Private ({ Item }) {
+  const { signed } = useAuth();
+
+  return signed > 0 ? <Item /> : <Login />;
+}
 
 function App() {
   return (

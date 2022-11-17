@@ -1,11 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import ButtonPrimary from '../components/Button/ButtonPrimary';
+import InputSenha from '../components/Form/InputSenha';
 import Input from '../components/Form/Input';
 import styles from './Login.module.css'
 import { useNavigate } from "react-router-dom";
 import useAuth from '../context/useAuth';
-import Loading from '../components/Loading';
 
 const Login = () => {
   const { Login } = useAuth();
@@ -49,19 +49,17 @@ const Login = () => {
               />
             </div>
             <div className="password-input">
-              <Input
-               label="Senha:"
+              <InputSenha
+                label="Senha:"
                 type="password"
                 placeholder=""
-                value={password}
                 onChange={(e) => [setPassword(e.target.value), setError("")]}
               />
-            </div>
-            
+        </div>
+
             <div className="labelError">{error}</div>
             <div className="container-login-form-btn">
               <ButtonPrimary text='Entrar' onClick={handleLogin}/>
-  
             </div>
 
             <div className="text-center">

@@ -5,6 +5,7 @@ import Input from '../components/Form/Input';
 import styles from './Cadastro.module.css'
 import { useNavigate } from "react-router-dom";
 import useAuth from '../context/useAuth';
+import InputSenha from '../components/Form/InputSenha';
 
 function Cadastro() {
     const [email, setEmail] = useState("");
@@ -63,7 +64,7 @@ function Cadastro() {
             </div>
             </div>
             <div className="password-input">
-              <Input
+              <InputSenha
               label="Senha:"
                type="password"
                placeholder=""

@@ -3,7 +3,7 @@
     background-color: #061B21;
     border-radius: 12px;
     width: 500px;
-    height: 700px;
+    height: 590px;
     position: center;
     display: grid;
     justify-content: space-between;
@@ -11,12 +11,6 @@
     align-items: center;
     align-content: center;
 }
-
-.labelError {
-      font-size: 14px;
-  color: red;
-}
-
 
 .container.cadastro {
     display: flex;

@@ -9,16 +9,21 @@ import { GlobalCarrinho } from './context/GlobalContext';
 import Carrinho from './components/Carrinho/Carrinho';
 import Cadastro from './pages/Cadastro';
 import Login from './pages/Login';
+import Usuario from './pages/Usuario';
+import { AuthProvider } from "./context/auth";
+
 
 function App() {
   return (
     <GlobalCarrinho>
       <div className="App">
+      <AuthProvider>
         <BrowserRouter>
           <Header />
           <div className="content">
             <Routes>
               <Route path="/" element={<Produtos />} />
+              <Route path="/usuario" element={<Usuario />} />
               <Route path="produto/:id" element={<Produto />} />
               <Route path="cadastro" element={<Cadastro />} />
               <Route path="login" element={<Login />} />
@@ -28,6 +33,7 @@ function App() {
           <Carrinho />
           <Footer />
         </BrowserRouter>
+        </AuthProvider>
       </div>
     </GlobalCarrinho>
   );

@@ -3,18 +3,47 @@ import { useState } from 'react';
 import ButtonPrimary from '../components/Button/ButtonPrimary';
 import Input from '../components/Form/Input';
 import styles from './Cadastro.module.css'
+import { useNavigate } from "react-router-dom";
+import useAuth from '../context/useAuth';
 
 function Cadastro() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [emailConf, setEmailConf] = useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+
+    const { Cadastro } = useAuth();
+  
+    const handleCadastro = () => {
+      if (!email | !emailConf | !password) {
+        setError("*Preencha todos os campos");
+        return;
+      } else if (email !== emailConf) {
+        setError("*Os e-mails não são iguais");
+        return;
+      }
+     
+  
+      const res = Cadastro(email, password);
+  
+      if (res) {
+        setError(res);
+        return;
+      }
+      
+  
+      alert("Usuário cadastrado com sucesso!");
+      navigate("/login");
+    };
+  
+
 
     return (
         <div className={styles.container}>
         <div className={styles.container.cadastro}>
         <form className="cadastro-form">
         <h2 className="cadastro-form-title">Faça o seu cadastro.</h2>
-        <h5>Preencha os campos abaixo com os seus dados.</h5>
             <div className="email-input">
               <Input
                label="Email:"
@@ -42,9 +71,10 @@ function Cadastro() {
                onChange={(e) => [setPassword(e.target.value), setError("")]}
               />
             </div>
-            
+
+            <div className="labelError">{error}</div>
             <div className="container-login-form-btn">
-              <ButtonPrimary text='Entrar'/>
+              <ButtonPrimary text='Cadastre-se' onClick={handleCadastro}/>
             </div>
             
 
